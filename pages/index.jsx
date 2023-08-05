@@ -3,8 +3,9 @@ import { ThirdwebSDK } from "@thirdweb-dev/sdk";
 import { useLogout, useUser } from "@thirdweb-dev/react";
 import { getUser } from "../auth.config";
 import checkBalance from "../util/checkBalance";
-import styles from "../styles/Home.module.css";
 import { useRouter } from "next/router";
+import BlurredText from "./BlurredText";
+import ThirdwebGuideHeader from "../components/ThirdwebGuideHeader";
 
 export default function Home() {
   const { logout } = useLogout();
@@ -18,15 +19,28 @@ export default function Home() {
   }, [isLoading, isLoggedIn, router]);
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.h1}>Restricted Access Page</h1>
-      <p className={styles.explain}>
-        Thanks for being a member of our NFT community!
-      </p>
+    <div>
+      <ThirdwebGuideHeader />
 
-      <button className={styles.mainButton} onClick={logout}>
-        Logout
-      </button>
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <div className="text-xl mb-2">
+            <BlurredText text="You have entered the gated page by holding a nft." />
+          </div>
+          <div className="font-bold">
+            <BlurredText text="Welcome!" />
+          </div>
+
+          <div className="mt-6">
+            <button
+              onClick={logout}
+              className="text-white border-2 px-10 py-2 rounded-lg bg-purple-900 shadow-md shadow-[rgb(123,204,255)] hover:bg-purple-800 hover:translate-y-2 hover:shadow-none active:bg-purple-400"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -53,7 +67,7 @@ export async function getServerSideProps(context) {
   // Instantiate our SDK
   const sdk = ThirdwebSDK.fromPrivateKey(
     process.env.THIRDWEB_AUTH_PRIVATE_KEY,
-    "mumbai"
+    "goerli"
   );
 
   // Check to see if the user has an NFT

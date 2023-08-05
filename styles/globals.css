@@ -1,44 +1,52 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
-
-/* Box sizing rules */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* Set core body defaults */
-body {
-  min-height: 100vh;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
-  padding-bottom: 250px;
-}
-
-/* Inherit fonts for inputs and buttons */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-:root {
-  --background-color: #1c1e21;
-  --white: #ffffff;
-  --tw-color1: #a855f7;
-  --tw-color1-hover: #9333ea;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
-  background: var(--background-color);
-  font-family: "Inter", sans-serif;
-  color: var(--white);
-  display: flex;
-  margin: 0;
-  text-align: center;
+  background-color: #1C1E21;
+  overflow: hidden;
 }
 
-h2 {
-  font-size: 2rem;
+p {
+  color: white;
+}
+
+::selection {
+  background: rgba(123, 204, 255);
+  color: black;
+}
+
+::-moz-selection {
+  background: rgba(123, 204, 255);
+  color: black;
+}
+
+
+.underline {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.underline::before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: rgb(147 51 234);
+  transition: all 0.2s ease-in-out;
+}
+
+.underline:hover::before {
+  width: 100%;
+}
+
+.blurred-letter {
+  text-shadow: 3px 3px rgb(132, 0, 255);
+  position: relative;
+  color: white;
+  font-size: 20px;
 }

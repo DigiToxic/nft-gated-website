@@ -3,13 +3,11 @@ import {
   contractAddress,
   erc721TokenId,
   minimumBalance,
-  CONTRACT_ABI
 } from "../const/yourDetails";
 
 export default async function checkBalance(sdk, address) {
   const contract = await sdk.getContract(
     contractAddress,
-    CONTRACT_ABI
   );
 
   let balance;
