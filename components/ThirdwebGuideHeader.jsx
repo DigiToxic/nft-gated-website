@@ -24,7 +24,7 @@ export default function ThirdwebGuideHeader() {
         }}
       >
         <img
-          src={"/name.png"}
+          src={"/Name.png"}
           width={80}
           height={40}
           className="-rotate-[40deg]"
