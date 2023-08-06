@@ -54,3 +54,9 @@ p {
   font-size: 20px;
   font-family: 'Rubik'
 }
+
+@media (max-width: 675px) {
+  .blurred-letter {
+    font-size: 16px;
+  }
+}
