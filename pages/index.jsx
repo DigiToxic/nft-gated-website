@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import BlurredText from "../components/BlurredText";
 import ThirdwebGuideHeader from "../components/ThirdwebGuideHeader";
 
-export default function Home() {
+export default function Home({ showAlert }) {
   const { logout } = useLogout();
   const { isLoggedIn, isLoading } = useUser();
   const router = useRouter();
@@ -17,6 +17,13 @@ export default function Home() {
       router.push("/login");
     }
   }, [isLoading, isLoggedIn, router]);
+
+  useEffect(() => {
+    if (showAlert) {
+      alert("User doesn't have an NFT! Redirecting...");
+      router.push("/login");
+    }
+  }, [showAlert, router]);
 
   return (
     <div>
@@ -34,7 +41,7 @@ export default function Home() {
           <div className="mt-6">
             <button
               onClick={logout}
-              className="text-white border-2 px-10 py-2 rounded-lg bg-purple-900 shadow-md shadow-[rgb(123,204,255)] hover:bg-purple-800 hover:translate-y-2 hover:shadow-none active:bg-purple-400"
+              className="text-white border-2 px-10 py-2 rounded-lg font-[Rubik] bg-purple-900 shadow-md shadow-[rgb(123,204,255)] hover:bg-purple-800 hover:translate-y-2 hover:shadow-none active:bg-purple-400"
             >
               Logout
             </button>
@@ -73,13 +80,11 @@ export async function getServerSideProps(context) {
   // Check to see if the user has an NFT
   const hasNft = await checkBalance(sdk, user.address);
 
-  // If they don't have an NFT, redirect them to the login page
+  // If they don't have an NFT, set showAlert prop to true
   if (!hasNft) {
-    console.log("User", user.address, "doesn't have an NFT! Redirecting...");
     return {
-      redirect: {
-        destination: "/login",
-        permanent: false,
+      props: {
+        showAlert: true,
       },
     };
   }

@@ -2,6 +2,7 @@ import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
 import Link from "next/link";
 import BlurredText from "../components/BlurredText";
 import ThirdwebGuideHeader from "../components/ThirdwebGuideHeader";
+import { motion } from "framer-motion";
 
 export default function Login() {
   const address = useAddress();
@@ -40,7 +41,7 @@ export default function Login() {
 
       <div>
         <div className="flex items-center justify-evenly h-screen">
-          <div className="w-1/4 text-center mb-44">
+          <div className="w-[30%] text-center mb-44">
             <BlurredText text="This is a small showcase of a token gated website. Please feel free to try it out!" />
             <div className="mt-10">
               <BlurredText text="Also don't forget to follow me on twitter and checking my developer agency where we take your ideas to the next level!" />

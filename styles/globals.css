@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,6 +11,7 @@ body {
 
 p {
   color: white;
+  font-family: 'Rubik'
 }
 
 ::selection {
@@ -49,4 +52,5 @@ p {
   position: relative;
   color: white;
   font-size: 20px;
+  font-family: 'Rubik'
 }
