@@ -4,7 +4,7 @@ import { useLogout, useUser } from "@thirdweb-dev/react";
 import { getUser } from "../auth.config";
 import checkBalance from "../util/checkBalance";
 import { useRouter } from "next/router";
-import BlurredText from "./BlurredText";
+import BlurredText from "../components/BlurredText";
 import ThirdwebGuideHeader from "../components/ThirdwebGuideHeader";
 
 export default function Home() {

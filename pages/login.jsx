@@ -1,6 +1,6 @@
 import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
 import Link from "next/link";
-import BlurredText from "./BlurredText";
+import BlurredText from "../components/BlurredText";
 import ThirdwebGuideHeader from "../components/ThirdwebGuideHeader";
 
 export default function Login() {
